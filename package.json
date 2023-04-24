@@ -9,6 +9,8 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@babylonjs/gui": "^6.0.0",
+    "@babylonjs/inspector": "^6.0.0",
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
     "quasar": "^2.6.0",
@@ -16,6 +18,8 @@
     "vue-router": "^4.0.0"
   },
   "devDependencies": {
+    "@babylonjs/core": "^6.0.0",
+    "@babylonjs/materials": "^6.0.0",
     "@quasar/app-webpack": "^3.0.0"
   },
   "browserslist": [
