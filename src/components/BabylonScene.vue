@@ -1,8 +1,8 @@
 <template>
   <div class="new">
     <q-btn-toggle
-      id="tool"
       v-model="tool"
+      id="tool"
       class="absolute btn"
       color="secondary"
       glossy
@@ -11,7 +11,7 @@
         { value: 'cursor', slot: 'cursor' },
         { value: 'offset', slot: 'offset' },
         { value: 'rotate', slot: 'rotate' },
-        { value: 'scaling', slot: 'scaling' },
+        { value: 'scale', slot: 'scale' },
       ]"
     >
       <template v-slot:cursor>
@@ -26,7 +26,7 @@
         <q-icon color="dark" name="rotate_left" />
       </template>
 
-      <template v-slot:scaling>
+      <template v-slot:scale>
         <q-icon color="dark" name="zoom_out_map" />
       </template>
     </q-btn-toggle>
@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "@vue/runtime-core";
+import { ref, onMounted, provide } from "@vue/runtime-core";
 import { createScene } from "../scenes/MainScene";
 
 const bjsCanvas = ref(null);
@@ -44,7 +44,7 @@ const tool = ref("cursor");
 
 onMounted(() => {
   if (bjsCanvas.value) {
-    createScene(bjsCanvas.value);
+    createScene(bjsCanvas.value, tool);
   }
 });
 </script>
