@@ -1,6 +1,7 @@
 <template>
   <div class="new">
     <q-btn-toggle
+      id="tool"
       v-model="tool"
       class="absolute btn"
       color="secondary"
@@ -39,7 +40,7 @@ import { ref, onMounted } from "@vue/runtime-core";
 import { createScene } from "../scenes/MainScene";
 
 const bjsCanvas = ref(null);
-const tool = ref();
+const tool = ref("cursor");
 
 onMounted(() => {
   if (bjsCanvas.value) {
