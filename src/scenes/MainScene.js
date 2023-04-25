@@ -32,41 +32,39 @@ const createScene = (canvas, tool) => {
 
     const toolBtn = document.querySelector('#tool')
     toolBtn.addEventListener('click', () => {
-        if (tool.value == 'cursor') {
-            console.log('cursor');
-            gizmoManager.scaleGizmoEnabled = false
-            gizmoManager.rotationGizmoEnabled = false
-            gizmoManager.positionGizmoEnabled = false
-            gizmoManager.boundingBoxGizmoEnabled = false
-        }
-        if (tool.value == 'rotate') {
-            console.log('rotate');
-            gizmoManager.scaleGizmoEnabled = false
-            gizmoManager.rotationGizmoEnabled = true
-            gizmoManager.positionGizmoEnabled = false
-            gizmoManager.boundingBoxGizmoEnabled = false
-        }
-        if (tool.value == 'scale') {
-            console.log('scale');
-            gizmoManager.scaleGizmoEnabled = true
-            gizmoManager.rotationGizmoEnabled = false
-            gizmoManager.positionGizmoEnabled = false
-            gizmoManager.boundingBoxGizmoEnabled = false
-        }
-        if (tool.value == 'offset') {
-            console.log('offset');
-            gizmoManager.scaleGizmoEnabled = false
-            gizmoManager.rotationGizmoEnabled = false
-            gizmoManager.positionGizmoEnabled = true
-            gizmoManager.boundingBoxGizmoEnabled = true
+        switch (tool.value) {
+            case 'cursor':
+                gizmoManager.scaleGizmoEnabled = false
+                gizmoManager.rotationGizmoEnabled = false
+                gizmoManager.positionGizmoEnabled = false
+                gizmoManager.boundingBoxGizmoEnabled = false
+                break
+            case 'rotate':
+                gizmoManager.scaleGizmoEnabled = false
+                gizmoManager.rotationGizmoEnabled = true
+                gizmoManager.positionGizmoEnabled = false
+                gizmoManager.boundingBoxGizmoEnabled = false
+                break
+            case 'scale':
+                gizmoManager.scaleGizmoEnabled = true
+                gizmoManager.rotationGizmoEnabled = false
+                gizmoManager.positionGizmoEnabled = false
+                gizmoManager.boundingBoxGizmoEnabled = false
+                break
+            case 'offset':
+                gizmoManager.scaleGizmoEnabled = false
+                gizmoManager.rotationGizmoEnabled = false
+                gizmoManager.positionGizmoEnabled = true
+                gizmoManager.boundingBoxGizmoEnabled = true
+                break
         }
     })
 
     scene.onPointerDown = function (evt, pickResult) {
-        scene.meshes.forEach((mesh) => mesh.material = material)
+        scene.meshes.forEach((mesh) => mesh.material = material);
 
         if (pickResult.hit) {
-            pickResult.pickedMesh.material = materialOnChoose;;
+            pickResult.pickedMesh.material = materialOnChoose;
         }
     };
 
